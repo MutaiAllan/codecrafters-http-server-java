@@ -20,7 +20,6 @@ public class Main {
       DataOutputStream dataOutputStream =
           new DataOutputStream(clientSocket.getOutputStream());
       dataOutputStream.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
-1
       dataOutputStream.flush();
       System.out.println("accepted new connection");
     } catch (IOException e) {
