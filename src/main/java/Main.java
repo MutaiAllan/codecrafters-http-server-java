@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.io.DataOutputStream;
+import java.util.Objects;
 
 public class Main {
   public static void main(String[] args) {
@@ -22,6 +23,14 @@ public class Main {
       dataOutputStream.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
       dataOutputStream.flush();
       System.out.println("accepted new connection");
+
+      String[] request =
+          in.readLine().split(" "); // Ignore the client input
+      if (Objects.equals(request[1], "/")) {
+        out.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
+      } else {
+        out.write("HTTP/1.1 404 Not Found\r\n\r\n".getBytes());
+      }
     } catch (IOException e) {
       System.out.println("IOException: " + e.getMessage());
     }
