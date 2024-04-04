@@ -3,6 +3,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.io.DataOutputStream;
 import java.util.Objects;
+import java.io.OutputStream;
 
 public class Main {
   public static void main(String[] args) {
@@ -25,11 +26,11 @@ public class Main {
       System.out.println("accepted new connection");
 
       String[] request =
-          System.in.readLine().split(" "); // Ignore the client input
+          in.readLine().split(" "); // Ignore the client input
       if (Objects.equals(request[1], "/")) {
-        System.out.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
+        out.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
       } else {
-        System.out.write("HTTP/1.1 404 Not Found\r\n\r\n".getBytes());
+        out.write("HTTP/1.1 404 Not Found\r\n\r\n".getBytes());
       }
     } catch (IOException e) {
       System.out.println("IOException: " + e.getMessage());
