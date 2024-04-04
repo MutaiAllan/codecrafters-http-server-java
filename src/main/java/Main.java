@@ -25,13 +25,19 @@ public class Main {
       dataOutputStream.flush();
       System.out.println("accepted new connection");
 
-      String[] request =
-          in.readLine().split(" "); // Ignore the client input
-      if (Objects.equals(request[1], "/")) {
-        out.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
-      } else {
-        out.write("HTTP/1.1 404 Not Found\r\n\r\n".getBytes());
-      }
+      System.out.println("Connected!");
+      try (BufferedReader in = new BufferedReader(
+               new InputStreamReader(clientSocket.getInputStream()))) {
+        try (OutputStream out = clientSocket.getOutputStream()) {
+
+        String[] request =
+            in.readLine().split(" "); // Ignore the client input
+        if (Objects.equals(request[1], "/")) {
+          out.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
+        } else {
+          out.write("HTTP/1.1 404 Not Found\r\n\r\n".getBytes());
+        }
+    }
     } catch (IOException e) {
       System.out.println("IOException: " + e.getMessage());
     }
