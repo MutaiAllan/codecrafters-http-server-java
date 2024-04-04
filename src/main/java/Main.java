@@ -27,9 +27,9 @@ public class Main {
       String[] request =
           in.readLine().split(" "); // Ignore the client input
       if (Objects.equals(request[1], "/")) {
-        out.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
+        System.out.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
       } else {
-        out.write("HTTP/1.1 404 Not Found\r\n\r\n".getBytes());
+        System.out.write("HTTP/1.1 404 Not Found\r\n\r\n".getBytes());
       }
     } catch (IOException e) {
       System.out.println("IOException: " + e.getMessage());
