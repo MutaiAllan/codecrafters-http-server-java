@@ -25,7 +25,7 @@ public class Main {
       System.out.println("accepted new connection");
 
       String[] request =
-          in.readLine().split(" "); // Ignore the client input
+          System.in.readLine().split(" "); // Ignore the client input
       if (Objects.equals(request[1], "/")) {
         System.out.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
       } else {
