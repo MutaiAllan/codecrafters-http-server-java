@@ -23,7 +23,6 @@ public class Main {
         try (OutputStream out = clientSocket.getOutputStream()) {
           String[] request =
               in.readLine().split(" "); // Ignore the client input
-          // if (Objects.equals(request[1], "/")) {
           String path = request[1];
           if (path.equals("/")) {
             out.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
