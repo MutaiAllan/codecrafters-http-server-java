@@ -22,7 +22,7 @@ public class Main {
                new InputStreamReader(clientSocket.getInputStream()))) {
         try (OutputStream out = clientSocket.getOutputStream()) {
           String[] request =
-              in.readLine().split(" "); // Ignore the client input
+              in.readLine().split(" "); // Ignore the client in
           String path = request[1];
           if (path.equals("/")) {
             out.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
